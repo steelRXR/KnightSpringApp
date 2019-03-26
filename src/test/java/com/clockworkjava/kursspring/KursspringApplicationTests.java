@@ -1,6 +1,6 @@
 package com.clockworkjava.kursspring;
 
-import com.clockworkjava.kursspring.domain.repository.InMemoryRepository;
+import com.clockworkjava.kursspring.domain.repository.repositoryImpl.InMemoryRepository;
 import com.clockworkjava.kursspring.domain.Knight;
 import org.junit.Test;
 import org.junit.runner.RunWith;

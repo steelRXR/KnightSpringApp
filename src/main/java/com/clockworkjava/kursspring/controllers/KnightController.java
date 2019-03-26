@@ -4,6 +4,7 @@ import com.clockworkjava.kursspring.components.TimeComponent;
 import com.clockworkjava.kursspring.domain.Knight;
 import com.clockworkjava.kursspring.domain.PlayerInformation;
 import com.clockworkjava.kursspring.domain.repository.KnightRepository;
+import com.clockworkjava.kursspring.domain.repository.PlayerInformationRepository;
 import com.clockworkjava.kursspring.services.KnightService;
 import com.sun.corba.se.spi.legacy.interceptor.RequestInfoExt;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,34 +26,37 @@ public class KnightController {
     TimeComponent timeComponent;
 
     @Autowired
-    PlayerInformation playerInformation;
+    PlayerInformationRepository playerInformationRepository;
 
     @Autowired
-    KnightService service;
+    KnightService knightService;
 
     @RequestMapping("/knights")
     public String getKnights(Model model) {
-        List<Knight> allKnights = service.getAllKnights();
+        PlayerInformation pi = playerInformationRepository.getFirst();
+        List<Knight> allKnights = knightService.getAllKnights();
         model.addAttribute("knights", allKnights);
         model.addAttribute("timecomponent", timeComponent);
-        model.addAttribute("playerinformation", playerInformation);
+        model.addAttribute("playerinformation", pi);
         return "knights";
     }
 
     @RequestMapping("/knight")
     public String getKnight(@RequestParam("id") Integer id, Model model) {
-        Knight knight = service.getKnight(id);
+        PlayerInformation pi = playerInformationRepository.getFirst();
+        Knight knight = knightService.getKnight(id);
         model.addAttribute("knight", knight);
         model.addAttribute("timecomponent", timeComponent);
-        model.addAttribute("playerinformation", playerInformation);
+        model.addAttribute("playerinformation", pi);
         return "knight";
     }
 
     @RequestMapping("/newknight")
     public String createKnight(Model model) {
+        PlayerInformation pi = playerInformationRepository.getFirst();
         model.addAttribute("knight", new Knight());
         model.addAttribute("timecomponent", timeComponent);
-        model.addAttribute("playerinformation", playerInformation);
+        model.addAttribute("playerinformation", pi);
         return "knightform";
     }
 
@@ -67,7 +71,7 @@ public class KnightController {
             );
             return "knightform";
         } else {
-            service.saveKnight(knight);
+            knightService.saveKnight(knight);
             return "redirect:/knights";
         }
 
@@ -75,7 +79,8 @@ public class KnightController {
 
     @RequestMapping(value = "/knight/delete/{id}")
     public String deleteKnight(@PathVariable("id") Integer id) {
-        service.deleteKnight(id);
+        Knight knight = knightService.getKnight(id);
+        knightService.deleteKnight(knight);
         return "redirect:/knights";
     }
 }

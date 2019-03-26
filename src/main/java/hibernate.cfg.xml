@@ -14,5 +14,6 @@
 
         <mapping class="com.clockworkjava.kursspring.domain.Quest"/>
         <mapping class="com.clockworkjava.kursspring.domain.Knight"/>
+        <mapping class="com.clockworkjava.kursspring.domain.PlayerInformation"/>
     </session-factory>
 </hibernate-configuration>

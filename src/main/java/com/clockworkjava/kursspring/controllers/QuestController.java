@@ -24,9 +24,6 @@ public class QuestController {
     @Autowired
     QuestService questService;
 
-    @Autowired
-    PlayerInformation playerInformation;
-
     @RequestMapping("/assignQuest")
     public String assignQuest(@RequestParam("knightId") Integer id, Model model) {
         Knight knight = knightService.getKnight(id);
@@ -39,7 +36,7 @@ public class QuestController {
     @RequestMapping(value = "/assignQuest", method = RequestMethod.POST)
     public String assignQuest(Knight knight, BindingResult result) {
         System.out.println(result);
-        knightService.updateKnight(knight);
+        knightService.update(knight);
 //        Quest quest = knight.getQuest();
 //        questService.update(quest);
         return "redirect:/knights";
@@ -47,9 +44,7 @@ public class QuestController {
 
     @RequestMapping(value = "/checkQuests")
     public String checkQuests() {
-
-        knightService.getMyGold();
-
+        knightService.getMyAwards();
         return "redirect:/knights";
     }
 

@@ -7,7 +7,7 @@
     <context:property-placeholder location="classpath:knightRepository.properties"/>
 
 
-        <bean id="knightRepository" class="com.clockworkjava.kursspring.domain.repository.InMemoryRepository"
+        <bean id="knightRepository" class="com.clockworkjava.kursspring.domain.repository.repositoryImpl.InMemoryRepository"
               init-method="build">
         </bean>
 

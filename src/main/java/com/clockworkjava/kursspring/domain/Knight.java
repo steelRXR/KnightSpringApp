@@ -14,7 +14,7 @@ public class Knight {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private Integer id;
 
     @NotNull
     @Size(min=2, max=40,message = "Imie rycerza musi miec miedzy 2, a 40 znakow")
@@ -96,6 +96,8 @@ public class Knight {
     public void setLevel(int level) {
         this.level = level;
     }
+
+    public void levelUp(){this.level = this.level + 1;}
 
 
     @Override

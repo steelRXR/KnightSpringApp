@@ -1,6 +1,7 @@
-package com.clockworkjava.kursspring.domain.repository;
+package com.clockworkjava.kursspring.domain.repository.repositoryImpl;
 
 import com.clockworkjava.kursspring.domain.Knight;
+import com.clockworkjava.kursspring.domain.repository.KnightRepository;
 import com.clockworkjava.kursspring.utils.Ids;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
@@ -41,9 +42,8 @@ public class InMemoryRepository implements KnightRepository {
     }
 
     @Override
-    public void deleteKnight(Integer id) {
-
-        knights.remove(id);
+    public void deleteKnight(Knight knight) {
+        knights.remove(knight.getId());
     }
 
     @Override
@@ -65,15 +65,15 @@ public class InMemoryRepository implements KnightRepository {
     }
 
     @Override
+    public void update(Knight knight) {
+
+    }
+
+    @Override
     public String toString() {
         return "InMemoryRepository{" +
                 "knights=" + knights +
                 '}';
-    }
-
-    @Override
-    public void updateKnight(int id, Knight knight) {
-        knights.put(id,knight);
     }
 
 }

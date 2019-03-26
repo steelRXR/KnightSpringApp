@@ -15,7 +15,7 @@ public interface KnightRepository {
 
     Optional<Knight> getKnight(String name);
 
-    void deleteKnight(Integer id);
+    void deleteKnight(Knight knight);
 
     void build();
 
@@ -23,5 +23,5 @@ public interface KnightRepository {
 
     Knight getKnightById(Integer id);
 
-    default void updateKnight(int id, Knight knight) { throw new NotImplementedException(); }
+    void update(Knight knight);
 }

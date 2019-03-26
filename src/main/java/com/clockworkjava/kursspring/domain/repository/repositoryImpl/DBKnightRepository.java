@@ -1,6 +1,7 @@
-package com.clockworkjava.kursspring.domain.repository;
+package com.clockworkjava.kursspring.domain.repository.repositoryImpl;
 
 import com.clockworkjava.kursspring.domain.Knight;
+import com.clockworkjava.kursspring.domain.repository.KnightRepository;
 import org.springframework.stereotype.Repository;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
@@ -40,8 +41,8 @@ public class DBKnightRepository implements KnightRepository {
 
     @Transactional
     @Override
-    public void deleteKnight(Integer id) {
-       em.remove(id);
+    public void deleteKnight(Knight knight) {
+       em.remove(knight);
     }
 
     @Override
@@ -61,7 +62,8 @@ public class DBKnightRepository implements KnightRepository {
         return em.find(Knight.class,id);
     }
 
-    public void updateKnight(Knight knight){
+    @Transactional
+    public void update(Knight knight){
         em.merge(knight);
     }
 
