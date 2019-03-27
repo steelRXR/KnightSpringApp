@@ -10,12 +10,23 @@ import javax.persistence.Id;
 @Entity
 public class PlayerInformation {
 
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
+    private String username;
+
+    private String password;
+
     private int gold = 0;
+
+    public PlayerInformation(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
+
+    public PlayerInformation() {
+    }
 
     public int getGold() {
         return gold;
