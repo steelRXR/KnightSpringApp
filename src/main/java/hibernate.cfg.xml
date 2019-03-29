@@ -4,13 +4,12 @@
         "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
     <session-factory>
-        <property name="hibernate.connection.driver_class">org.h2.Driver</property>
-        <property name="hibernate.connection.url">jdbc:h2:mem:mydb</property>
-        <property name="hibernate.connection.username">sa</property>
-        <property name="hibernate.connection.password"/>
+        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/knightdb</property>
+        <property name="hibernate.connection.username">spring</property>
+        <property name="hibernate.connection.password">spring</property>
         <property name="hibernate.show_sql">true</property>
-        <property name="dialect">org.hibernate.dialect.H2Dialect</property>
-        <property name="hbm2ddl.auto">create</property>
+        <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
 
         <mapping class="com.clockworkjava.kursspring.domain.Quest"/>
         <mapping class="com.clockworkjava.kursspring.domain.Knight"/>

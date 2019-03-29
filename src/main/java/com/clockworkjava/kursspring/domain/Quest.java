@@ -1,5 +1,7 @@
 package com.clockworkjava.kursspring.domain;
 
+import org.springframework.data.jpa.convert.threeten.Jsr310JpaConverters;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
@@ -20,6 +22,8 @@ public class Quest {
 
     private boolean completed = false;
 
+    @Transient
+    @Convert(converter = Jsr310JpaConverters.LocalDateTimeConverter.class)
     protected LocalDateTime startDate;
 
     public Quest() {

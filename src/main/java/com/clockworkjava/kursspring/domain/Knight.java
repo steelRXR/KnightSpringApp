@@ -27,6 +27,7 @@ public class Knight {
 
     private int level;
 
+    @Transient
     @OneToOne
     private Quest quest;
 

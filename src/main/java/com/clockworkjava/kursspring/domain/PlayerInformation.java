@@ -18,11 +18,14 @@ public class PlayerInformation {
 
     private String password;
 
+    private boolean enabled;
+
     private int gold = 0;
 
     public PlayerInformation(String username, String password) {
         this.username = username;
         this.password = password;
+        this.enabled = true;
     }
 
     public PlayerInformation() {

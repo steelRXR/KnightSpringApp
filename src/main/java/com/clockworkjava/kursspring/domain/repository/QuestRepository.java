@@ -2,6 +2,7 @@ package com.clockworkjava.kursspring.domain.repository;
 
 import com.clockworkjava.kursspring.domain.Quest;
 import com.clockworkjava.kursspring.utils.Ids;
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Repository;
 
